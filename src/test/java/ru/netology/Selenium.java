@@ -42,7 +42,7 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
-        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время", text.trim());
 
     }
 
