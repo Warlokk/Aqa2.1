@@ -42,7 +42,7 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
-        assertEquals(" заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 
     @Test
@@ -52,8 +52,8 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79999999999");
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
-        String text = driver.findElement(By.cssSelector("[data-test-id=name] .input__sub")).getText();
-        assertEquals(" и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
+        String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] .input__sub")).getText();
+        assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
     }
 
     @Test
@@ -62,8 +62,8 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys(" 7999999999в");
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
-        String text = driver.findElement(By.cssSelector("[data-test-id=name] .input__sub")).getText();
-        assertEquals(" обязательно для заполнения", text.trim());
+        String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] .input__sub")).getText();
+        assertEquals("Поле обязательно для заполнения", text.trim());
     }
 
     @Test
@@ -73,8 +73,8 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys(" 7999999999в");
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
-        String text = driver.findElement(By.cssSelector("[data-test-id=phone] .input__sub")).getText();
-        assertEquals(" указан неверно. Должно быть 11 цифр, например, +79012345678.", text.trim());
+        String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=phone] .input__sub")).getText();
+        assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", text.trim());
     }
 
     @Test
@@ -83,8 +83,8 @@ public class Selenium {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
-        String text = driver.findElement(By.cssSelector("[data-test-id=phone] .input__sub")).getText();
-        assertEquals(" обязательно для заполнения", text.trim());
+        String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=phone] .input__sub")).getText();
+        assertEquals("Поле обязательно для заполнения", text.trim());
     }
 
 }
