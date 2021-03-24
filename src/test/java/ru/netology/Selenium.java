@@ -17,7 +17,7 @@ public class Selenium {
         if (System.getProperty("os.name").contains("Windows")) {
             System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
         } else if (System.getProperty("os.name").contains("Linux")) {
-            System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "Driver/chromedriver");
         }
     }
 
