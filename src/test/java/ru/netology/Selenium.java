@@ -81,10 +81,20 @@ public class Selenium {
     void shouldShowErrorBlankPhone() {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
-        driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("[type=button]")).submit();
         String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=phone] .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
+    }
+
+    @Test
+    void shouldNotSubmitUncheckedChekbox() {
+        driver.get("http://localhost:9999");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79999999999");
+        driver.findElement(By.cssSelector("[type=button]")).submit();
+        String text = driver.findElement(By.cssSelector(".input_invalid[data-test-id=agreement] .checkbox__text")).getText();
+        assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
     }
 
 }
